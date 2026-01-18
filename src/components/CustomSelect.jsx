@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const options = ["Furniture", "Decor", "Lights"];
 
@@ -6,6 +7,7 @@ export default function CustomSelect() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("Furniture");
   const ref = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handler = (e) => {
@@ -18,8 +20,16 @@ export default function CustomSelect() {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const handleSelect = (item) => {
+    setValue(item);
+    setOpen(false);
+
+    // 🔥 redirect
+    navigate(`/${item.toLowerCase()}`);
+  };
+
   return (
-    <div ref={ref} className="relative w-25">
+    <div ref={ref} className="relative w-25 text-nav">
       <button
         onClick={() => setOpen((p) => !p)}
         className="w-full text-left bg-transparent text-white border-0 focus:outline-none flex justify-between items-center hover:text-primary cursor-pointer"
@@ -33,10 +43,7 @@ export default function CustomSelect() {
           {options.map((item) => (
             <li
               key={item}
-              onClick={() => {
-                setValue(item);
-                setOpen(false);
-              }}
+              onClick={() => handleSelect(item)}
               className={`px-3 py-2 cursor-pointer hover:bg-white/10 hover:text-primary ${
                 item === value ? "bg-white/10" : ""
               }`}

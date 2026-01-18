@@ -54,9 +54,17 @@ const Navbar = () => {
               <CustomSelect />
             </li>
 
-            <li className="p-2 hover:text-primary cursor-pointer">Shop</li>
-            <li className="p-2 hover:text-primary cursor-pointer">About Us</li>
-            <li className="p-2 hover:text-primary cursor-pointer">Contact</li>
+            <Link to="/shop">
+              <li className="p-2 hover:text-primary cursor-pointer">Shop</li>
+            </Link>
+            <Link to="/about">
+              <li className="p-2 hover:text-primary cursor-pointer">
+                About Us
+              </li>
+            </Link>
+            <Link to="/contact">
+              <li className="p-2 hover:text-primary cursor-pointer">Contact</li>
+            </Link>
           </ul>
         </nav>
 
@@ -86,7 +94,7 @@ const Navbar = () => {
               <FaUserCircle size={30} />
             </button>
 
-            {/* Dropdown */}
+            {/* Dropdown & mobile */}
             {profileOpen && (
               <ul className="absolute right-0 z-50 mt-2 w-32 bg-[#272829] rounded-md shadow-lg text-sm">
                 <li className="px-4 py-2 cursor-pointer hover:bg-primary">
