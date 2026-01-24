@@ -29,7 +29,7 @@ export default function CustomSelect() {
   };
 
   return (
-    <div ref={ref} className="relative w-25 text-nav">
+    <div ref={ref} className="relative w-30 text-nav">
       <button
         onClick={() => setOpen((p) => !p)}
         className="w-full text-left bg-transparent text-white border-0 focus:outline-none flex justify-between items-center hover:text-primary cursor-pointer"
@@ -47,7 +47,7 @@ export default function CustomSelect() {
               className={`px-3 py-2 cursor-pointer hover:bg-white/10 hover:text-primary ${
                 item === value ? "bg-white/10" : ""
               }`}
-            >
+            > 
               {item}
             </li>
           ))}
